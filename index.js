@@ -13,12 +13,18 @@ app.listen(process.env.port || process.env.PORT || 3000, () => {
     console.log("Ok")
 });
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 app.get("/:name", (req, res) => {
     let name = req.params.name||"You";
+    name = name.toLowerCase();
+    name = capitalizeFirstLetter(name);
     res.render("main",{name,layout:false,imagebg:`images/countdown-${getRandomArbitrary()}-1600x900.jpg`})
 })
 app.get("/", (req, res) => {
-    res.render("main",{name:"there",layout:false,imagebg:`images/countdown-${getRandomArbitrary()}-1600x900.jpg`})
+    res.render("main", {name: "There", layout: false, imagebg: `images/countdown-${getRandomArbitrary()}-1600x900.jpg`})
 })
 function getRandomArbitrary() {
     let num= Math.floor(Math.random()*100)%3;
