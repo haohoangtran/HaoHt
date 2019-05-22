@@ -65,8 +65,6 @@
 	// Circular Progress Bar
 	
 	var isAnimated = false;
-	
-	document.title="Hao's 25th Party";
 })(jQuery);
 
 

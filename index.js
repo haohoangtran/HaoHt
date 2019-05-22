@@ -26,11 +26,30 @@ function humanize(str) {
 
 app.get("/:name", (req, res) => {
     let name = req.params.name || "You";
-    name = humanize(name)
-    res.render("main", {name, layout: false, imagebg: `images/countdown-${getRandomArbitrary()}-1600x900.jpg`})
+    name = humanize(name);
+    let date = new Date();
+    let year = date.getFullYear();
+    let age = 1 + date.getFullYear() - 1995;
+
+    res.render("main", {
+        name,
+        year,
+        age,
+        layout: false,
+        imagebg: `images/countdown-${getRandomArbitrary()}-1600x900.jpg`
+    })
 })
 app.get("/", (req, res) => {
-    res.render("main", {name: "There", layout: false, imagebg: `images/countdown-${getRandomArbitrary()}-1600x900.jpg`})
+    let date = new Date();
+    let year = date.getFullYear();
+    let age = 1 + date.getFullYear() - 1995;
+    res.render("main", {
+        name: "There",
+        year,
+        age,
+        layout: false,
+        imagebg: `images/countdown-${getRandomArbitrary()}-1600x900.jpg`
+    })
 })
 
 function getRandomArbitrary() {
